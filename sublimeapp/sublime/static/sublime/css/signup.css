@@ -1,0 +1,143 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-container {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px auto; /* Centered horizontally with top and bottom margin */
+    padding: 20px; /* Reduced padding */
+    max-width: 900px; /* Or any other max-width you prefer */
+    /* Removed min-height */
+}
+
+
+.signup-form {
+    flex-grow: 1;
+    max-width: 400px;
+    margin: 0; /* Removed margin */
+
+}
+
+.signup-image {
+    flex-grow: 1;
+    max-width: 400px;
+    margin: 20px;
+}
+
+.form-checkbox {
+    margin-bottom: 15px;
+}
+
+.form-button:hover {
+    background-color: #00408b;
+}
+
+.signup-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.already-member {
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    color: #0056b3;
+    text-decoration: none;
+}
+.form-text.text-muted {
+    font-size: 0.8rem; /* Reduce font size */
+    display: none; /* Hide the text */
+}
+.form-input {
+    width: 100%; /* full width */
+    padding: 12px 20px; /* more padding on the sides */
+    margin-bottom: 10px; 
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px; /* slightly larger font size */
+    box-sizing: border-box; /* include padding in width */
+}
+
+/* Add more specific styling for the button if needed */
+.form-button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-bottom: 10px; 
+}
+
+.form-button:hover {
+    background-color: #00408b;
+}
+
+/* Style adjustments for small help text */
+.form-text.text-muted {
+    font-size: 0.8rem; /* Smaller font size for help text */
+    color: #6c757d; /* Default Bootstrap color for muted text */
+    margin-top: 0.25rem;
+    margin-left: 20px; /* Align with the input padding */
+}
+
+/* Error message styling */
+.alert.alert-danger {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 20px; /* Align with the input padding */
+    width: 95%; /* Prevents the alert from extending beyond the input width */
+}
+
+.already-member .btn-secondary {
+    text-decoration: none;
+    color: #fff;
+    background-color: #6c757d; /* Bootstrap secondary button color */
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    display: inline-block; /* Aligns the link correctly */
+    margin-top: 10px; /* Optional: adds some space above the button */
+    cursor: pointer; /* Changes the cursor to signify this can be clicked */
+    transition: background-color 0.3s;
+}
+
+.already-member .btn-secondary:hover {
+    background-color: #5a6268; /* A slightly darker shade for hover state */
+    text-decoration: none; /* Ensures that hovering doesn't underline text */
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 10px; /* Adjust this value as needed to reduce space */
+}
+.form-group:first-child,
+.form-group:last-child {
+    margin-bottom: 5px;
+}
+
+/* Adjust the top margin of the header to reduce space */
+.signup-form h1 {
+    margin-top: 0;
+    margin-bottom: 20px; /* Adjusted bottom margin */
+}
+
+.already-member {
+    margin-top: 10px; /* Reduced space above the login button */
+}

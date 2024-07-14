@@ -1,0 +1,165 @@
+/* Adjust the sidebar to include the profile image and change image button */
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background-color: #172347;
+    color: #fff;
+    align-items: center; /* Center align the items */
+}
+
+/* Adjustments for the profile image in the sidebar */
+.profile-img {
+    display: block;  /* or inline-block */
+    width: 120px; /* Adjust as needed */
+    height: 120px; /* Adjust as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px; /* Space between image and button */
+}
+
+/* Style for the change image button */
+.btn-change-image {
+    background-color: #0d6efd;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-change-image:hover {
+    background-color: #0d6dfd91;
+
+
+}
+
+/* Adjust the nav-link to have a different look for active state */
+.nav-links {
+
+    padding: 20px 40px;  /*  length and height*/
+    color: #fff; /* White text */
+    text-decoration: none; /* No underline */
+    display: block; /* Make it block to occupy full width */
+    border-radius: 4px;
+    margin-top: 15px;   /*distance away from each other*/
+
+    margin-bottom: 15px;   /*distance away from each other*/
+    background-color: #6c757d;
+
+}
+
+.nav-links:hover {
+    background-color: #0d6dfd91;
+    color: #ffffff;
+}
+/* Main profile page layout */
+.user-profile-page {
+    display: flex;
+    flex-wrap: wrap; /* Allow sidebar to stack on smaller screens */
+    gap: 20px; /* Spacing between sidebar and content */
+    margin-top: 20px;
+    justify-content: center; /* Center the content for larger screens */
+}
+
+
+/* Styling for active link in sidebar */
+.sidebar{
+    background-color: #0c1930;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* Profile content section */
+.profile-content {
+    flex-grow: 1;
+    max-width: 800px; /* Maximum width for content area */
+    background-color: #ffffff; /* White background for content */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Profile image styles */
+.profile-image-container {
+    margin-bottom: 20px; /* Space below the profile image */
+}
+
+
+/* Form styling */
+.profile-form .profile-section {
+    margin-bottom: 20px; /* Space between form sections */
+}
+
+.profile-form h2 {
+    margin-bottom: 10px; /* Space below subheaders */
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px; /* Space below inputs */
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #0056b3;
+    border: none;
+    padding: 10px 15px;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #00408b;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    padding: 10px 15px;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin-top: 10px; /* Space above the change password button */
+}
+
+.btn-secondary:hover {
+    background-color: #0d6efd;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .user-profile-page {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%; /* Full width sidebar on smaller screens */
+        margin-bottom: 20px; /* Space below the sidebar when stacked */
+    }
+
+    .profile-content {
+        width: 100%; /* Full width content on smaller screens */
+    }
+}
+
+

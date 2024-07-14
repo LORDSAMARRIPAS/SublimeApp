@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Admin Event Management Dashboard{% endblock %} 
+{% block content %}
+    <h3 align="center">Event Management Dashboard</h3>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            {% url 'event_dashboard' as base_dash %}
+          <a class= "nav-link {% if request.path == base_dash %}  active {% endif %}" aria-current="page" href="{{ base_dash }}">Pending</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if 'rejected' in request.path %} active {% endif %} " href="{% url 'event_dashboard' status='rejected' %}">Rejected</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if 'approved' in request.path %} active {% endif %}" href="{% url 'event_dashboard' status='approved' %}">Approved</a>
+        </li>
+        
+      </ul>
+   
+    <!-- This block will be filled by the child template -->
+    {% block content1%} 
+        {% if status == 'approved' %}
+            {% include 'admin/event_approved.html'  %}           
+        {% elif status == 'rejected' %}
+            {% include 'admin/event_rejected.html'  %}
+        {% else %}
+            {% include 'admin/event_pending.html'  %}            
+        {% endif %}    
+       
+    {% endblock %}
+{% endblock %}

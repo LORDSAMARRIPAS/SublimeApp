@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Transaction List{% endblock %} 
+{% block content %}
+    <h3 align="center">Transaction List</h3>
+    {% if transactionList %}
+        {% for eachTransaction in transactionList %}
+        <table width="100%" >
+            <tr style="background-color:#00c3ff">
+                <th scope="col">Order id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Name</th>
+                <th scope="col">Total Price</th>
+            </tr>
+            <tr>
+                <td>{{ eachTransaction.id }}</td>
+                <td>{{ eachTransaction.date }}</td>
+                <td>{{ eachTransaction.user.first_name }}&nbsp{{ eachTransaction.user.last_name  }}</td>
+                <td>{{ eachTransaction.total_price }}</td>
+            </tr>
+            <tr><td colspan =4></td>
+            <table border="1"  width="100%" style="border-collapse: collapse">
+			<tr><th>Event id</th><th align="left">Event Name</th><th>Quantity</th><th>Price</th></tr>
+			{% for eachItem in eachTransaction.items.all %}
+            <tr>
+                <td>{{ eachItem.event.id }}</td>
+                <td>{{ eachItem.event.name }}</td>
+                <td>{{ eachItem.quantity }}</td>
+                <td>{{ eachItem.price }}</td>
+            </tr>
+            {% endfor %}
+            </table></tr><br><br>
+            
+        {% endfor %}
+        </table>
+    {% else %}
+        <h2>There are no orders.</h2>
+    {% endif %}
+{% endblock %}

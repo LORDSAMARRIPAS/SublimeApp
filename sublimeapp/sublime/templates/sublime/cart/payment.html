@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block title %}Payment{% endblock %} 
+{% block content %}
+<h3 align="center">Payment</h3>
+<h6>This page is todo later
+    This page is use for testing email sending.
+    Created an account on https://mailtrap.io/
+    Login with gmail account c70130973@gmail.com password: Banana1%87
+    All mails will be redirected here.  You can use fake email addresses.
+    Go to Email Testing -> Inboxes to see the email.
+    </h6>
+<form action="{% url 'complete_payment' %}" method="POST">
+    <br />
+    {% csrf_token %}
+    <button align="center" type="submit" class="btn btn-primary">Pay Now</button>
+</form>
+{% endblock %}

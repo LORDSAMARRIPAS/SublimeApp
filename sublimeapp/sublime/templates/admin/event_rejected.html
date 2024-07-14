@@ -1,0 +1,58 @@
+         
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Rejected Event List</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Event Creator</th>
+                                    <th>Event Name</th>
+                                    <th>Event Date</th>                                    
+                                    <th>Location</th>
+                                    <th>Description</th>                                    
+                                    <th>Event Status</th>
+                                    <th>Rejection Reason</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for event in eventList %}
+                                    {% if event.is_rejected%}                                      
+                                    <tr>
+                                        <td>{{ event.creator }}</td>
+                                        <td>{{ event.name }}</td>
+                                      
+                                        <td>{{event.edatetime|date:"Y-m-d H:i" }}</td>                                                                                                           
+                                        <td>{{ event.location }}</td>
+                                        <td>{{ event.description }}</td>                                     
+                                        <td>                                            
+                                            {{ event.get_status_display }}
+                                        </td>
+                                        <td>                                            
+                                            {% if event.eventrejection_set.all %}                                            
+                                            {{ event.eventrejection_set.last.reason}}                                             
+                                        </td>
+                                        
+                                        <td> 
+                                            <a href="{% url 'edit_rejection' event.eventrejection_set.last.id %}" class="btn btn-outline-primary ms-2">Edit</a>
+                                        </td> 
+                                        {% endif %}                                    
+                                        
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+

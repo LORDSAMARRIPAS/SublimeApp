@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Reject Event{% endblock %}
+
+{% block content %}
+   
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Reject Event</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="reason">Reason</label>                           
+                                <textarea class="form-control" id="reason" name="reason" rows="3">{{ rejection.reason }}</textarea>
+                                                         
+                            <br>
+                            <br>                            
+                                <button type="submit" class="btn btn-primary">Update</button>
+                                <a href="{% url 'event_dashboard' %}" class="btn btn-secondary">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+```

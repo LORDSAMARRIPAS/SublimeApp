@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Email Verification Needed</h1>
+    <p>Please check your email for a verification code and enter it below to verify your new email address.</p>
+    <form method="post" action="{% url 'email_verification_needed' user_id=user_id %}">
+        {% csrf_token %}
+        <label for="verificationCode">Verification Code:</label>
+        <input type="text" id="verificationCode" name="verification_code" required>
+        <button type="submit">Verify Email</button>
+    </form>
+    
+</div>
+{% endblock %}

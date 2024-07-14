@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'sublime/css/signin.css' %}">
+{% endblock extrahead %}
+
+{% block title %}Log in{% endblock %}
+
+
+{% block content %}
+<div class="shadow-wrap">
+  <div class="form-wrap">
+    <h3>Log in</h3>
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter user name" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" />
+      </div>
+      <input type="submit" value="Login" class="btn btn-primary" />
+    </form>
+    <p class="sign-up-text">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+  </div>
+  <div class="signin-image">
+    <img src="{% static 'sublime/images/signin-image.png' %}" alt="Sign in image">
+  </div>
+  
+</div>
+{% endblock %}

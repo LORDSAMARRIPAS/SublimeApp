@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{% if subtitle %} Sublime| {% endif %}{{ title }} | Sublime{% endblock %}
+
+{% block branding %}
+<!--<img src="img/logo.png" alt="logo">-->
+<h1 id="site-name" ><a href="{% url 'admin:index' %}">Sublime </a></h1>
+{% endblock %}
+
+{% block userlinks %}
+<a href="">Events</a>/
+{{ block.super }}
+
+{% endblock %} 
+
+{% block nav-global %}
+
+{% endblock %}
+
+{% block content_title %}{% if title %}<h1>Sublime Site Administration</h1>{% endif %}{% endblock %}
+{% block content_subtitle %}{% if subtitle %}<h2></h2>{% endif %}{% endblock %}
+
+
+

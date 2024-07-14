@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'sublime/css/myevents.css' %}">
+{% endblock extrahead %}
+
+
+{% block title %}Organizers List{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Organizers</h1>
+    <ul>
+    {% for organizer in organizers %}
+        <li>
+            <a href="{% url 'single_organizer_reviews' organizer.pk %}">
+                {{ organizer.username }} - Reviews: {{ organizer.reviews_count }}
+            </a>
+        </li>
+    {% empty %}
+        <li>No organizers found.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

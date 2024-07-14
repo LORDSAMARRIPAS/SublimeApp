@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'sublime/css/eventlist.css' %}">
+{% endblock extrahead %}
+
+{% block title %}Event List{% endblock %} 
+{% block content %}
+    <h3 align="center">Event List</h3>
+    <div class="container-fluid" style="background-color: aqua;">
+        <div class="row">
+            <form method="get">
+                <div class="col-16 py-2">
+                    {% for fm in myFilter.form %}
+                        {{fm.label}} {{fm}}
+                    {% endfor %}
+                    <button class="btn btn-primary btn-sm" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% if eventList %}
+        <div class="card-container">
+        {% for eachEvent in eventList %}
+            {% if eachEvent.is_approved %}
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        {% if eachEvent.image %}
+                        <img src="{{ eachEvent.image.url }}" alt="{{ eachEvent.id }}" class="event-img">
+                        {% else %}
+                            <img src="{% static 'sublime/images/no-image.png' %}" class="event-img">
+                        {% endif %}
+                        <h4>{{ eachEvent.name|truncatechars:35 }}</h4>
+                        <p>{{ eachEvent.description|truncatechars:55  }}</p>
+                        {{eachEvent.edatetime}}<br>
+                        <i>{{eachEvent.location|truncatechars:30}}</i>
+                        {% if eachEvent.quantity_available < 10 and eachEvent.quantity_available > 0%}
+                            Price: ${{ eachEvent.price }}
+                            <span style="color:red">Only {{eachEvent.quantity_available}} available</span>
+                        {% elif eachEvent.quantity_available == 0%}
+                            Price: ${{ eachEvent.price }}
+                            <span style="color:red">Sold Out</span>
+                        {% else %}
+                            Price: ${{ eachEvent.price }}
+                        {% endif %}
+                    </div><!-- End of card body-->
+                    <!-- Add to card button -->
+                    <form action="{% url 'add_to_shopping_cart' eachEvent.id %}" style="text-align: center;" method="POST">
+                        {% csrf_token %}
+                        {% if not user.is_organizer %}
+                            <button type="submit" class="btn btn-primary btn-sm"  {{eachEvent.button_disable}}>Add to Cart</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-primary btn-sm"  disabled >Add to Cart</button>
+                        {% endif %}
+                    </form>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal{{ eachEvent.id }}" tabindex="-1" aria-labelledby="modalLabel{{ eachEvent.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" >
+                                    <h5 class="modal-title" id="modalLabel{{ eachEvent.id }}">Event Details</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col"> 
+                                        {% if eachEvent.image %}
+                                            <img src="{{ eachEvent.image.url }}" alt="{{ eachEvent.id }}" class="event-img">
+                                        {% else %}
+                                            <img src="{% static 'sublime/images/no-image.png' %}" class="event-img">
+                                        {% endif %}
+                                        </div>
+                                        <div class="col">
+                                            <h3>{{ eachEvent.name }}</h3>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <p>{{ eachEvent.description }}</p>
+                                    <p><strong>Location:</strong> {{ eachEvent.location }}</p>
+                                    <p><strong>Date and Time:</strong> {{ eachEvent.edatetime }}</p>
+                                    <p><strong>Price:</strong> ${{ eachEvent.price }}</p>
+                                    <p><strong>Available Tickets:</strong> {{ eachEvent.quantity_available }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Modal -->
+                    <!-- Button trigger modal -->
+                    <button class="btn-detail" data-bs-toggle="modal" data-bs-target="#modal{{ eachEvent.id }}">Detail</button>
+                </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+  
+    {% else %}
+        <h2>There are no events.</h2>
+    {% endif %}
+</div>
+{% endblock %}

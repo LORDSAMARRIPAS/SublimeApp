@@ -1,0 +1,55 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Pending Event List</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Event Creator</th>
+                                    <th>Event Name</th>
+                                    <th>Event Date</th>                                    
+                                    <th>Location</th>
+                                    <th>Description</th>
+                                 
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for event in eventList %}
+                                    {% if event.is_pending%}                                      
+                                    <tr>
+                                        <td>{{ event.creator }}</td>
+                                        <td>{{ event.name }}</td>
+                                        <td>{{ event.edatetime }}</td>                                      
+                                        <td>{{ event.location }}</td>
+                                        <td>{{ event.description }}</td>
+                                   
+                                        <td>                                            
+                                             {{ event.get_status_display }}</td>
+                                        <td>
+                                            <a href="{% url 'approve_event' event.id %}" class="btn btn-primary btn-sm">Approve</a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'reject_event' event.id %}" class="btn btn-danger btn-sm">Reject</a>                                         
+                                                                              
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+

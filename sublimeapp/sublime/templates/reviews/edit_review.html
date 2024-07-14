@@ -1,0 +1,18 @@
+{%extends "base.html" %}
+{%block title%}Edit Review{%endblock%}
+{%block content%}
+  <h3 align="center">Edit Review for Event: {{review.event_id}}</h3>
+  <br/>
+  <form action="" method="POST" class="container">
+    {%csrf_token%}
+   {%if form.errors%} 
+      <div class="alert alert-danger" role="alert">
+        <strong>Oops!</strong> Something went wrong. Please check the form for errors.
+      </div>      
+    {%endif%} 
+    {{form.as_table}}
+    <br/>
+    <input type="submit" value="Update Review" class="btn btn-primary">    
+    </form>
+{%endblock%}
+```

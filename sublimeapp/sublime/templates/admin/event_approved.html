@@ -1,0 +1,50 @@
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Approved Event List</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Event Creator</th>
+                                    <th>Event Name</th>
+                                    <th>Event Date</th>                                    
+                                    <th>Location</th>
+                                    <th>Description</th>                                  
+                                    <th>Event Status</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for event in eventList %}
+                                    {% if event.is_approved%}                                      
+                                    <tr>
+                                        <td>{{ event.creator }}</td>
+                                        <td>{{ event.name }}</td>
+                                        <td>{{ event.edatetime }}</td>                                      
+                                        <td>{{ event.location }}</td>
+                                        <td>{{ event.description }}</td>
+                                    
+                                        <td>                                            
+                                             {{ event.get_status_display }}</td>
+                                        
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+

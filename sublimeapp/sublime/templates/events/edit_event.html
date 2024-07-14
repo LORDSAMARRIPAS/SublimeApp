@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Event{% endblock %}
+
+{% block content %}
+<h3 align="center">Edit Event</h3>
+<form action="" method="POST" class="container">
+    {%csrf_token%}
+    {%if form.errors%} 
+    <div class="alert alert-danger" role="alert">
+      <strong>Oops!</strong> Something went wrong. Please check the form for errors.
+    </div>      
+     {%endif%} 
+    {{form.as_table}}
+    <br/>
+    <input type="submit" value="Update Event" class="btn btn-primary">
+    <a href="{% url 'my_tickets' %}" class="btn btn-secondary">Return</a>
+</form>
+{% endblock %}  
+

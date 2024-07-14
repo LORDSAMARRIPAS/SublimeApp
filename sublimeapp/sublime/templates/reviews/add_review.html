@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Add Review{% endblock %}
+
+{% block content %}
+  <h3 align="center">Add Review</h3>
+  <br/>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% if form.errors %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Oops!</strong> Something went wrong. Please check the form for errors.
+      </div>
+    {% endif %}
+    {{ form.as_table }}
+    <br/>
+    <input type="submit" value="Add Review" class="btn btn-primary">
+  </form>
+{% endblock %}

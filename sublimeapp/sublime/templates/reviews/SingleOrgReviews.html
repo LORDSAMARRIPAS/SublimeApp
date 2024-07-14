@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'sublime/css/SingleOrgreviews.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<div class="Organizers">
+    <div class="reviews-content">
+        <h2>{{ organizer.username }}'s Reviews</h2>
+
+        <!-- Button to add a new review -->
+        <div class="add-review-button">
+            <a href="{% url 'add_review' organizer_id=organizer.id %}" class="btn btn-primary">Add Review</a>
+        </div>
+
+        <!-- List existing reviews -->
+        {% for review in reviews %}
+        <div class="review">
+            <h4>{{ review.user_id.username }}</h4>
+            <p>{{ review.date }}</p>
+            <strong>Event:</strong> {% if review.event_id %}{{ review.event.name }}{% endif %}<br>
+            <strong>Title:</strong> {{ review.title }}<br>
+            <strong>Rating:</strong> {{ review.rating }}<br>
+            <strong>Comments:</strong> 
+            <p>{{ review.review_txt }}</p>
+            <!-- Edit button, only if the user is the author of the review -->
+            {% if review.user_id == request.user %}
+                <a href="{% url 'edit_review' review_id=review.pk %}" class="btn btn-secondary">Edit Review</a>
+            {% endif %}
+            <!-- Delete button, only for superusers -->
+            {% if request.user.is_superuser %}    
+                    <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">
+            {% endif %}
+        </div>
+        {% empty %}
+        <p>No reviews available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

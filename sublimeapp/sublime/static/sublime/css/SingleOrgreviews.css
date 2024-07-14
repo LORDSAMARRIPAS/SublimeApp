@@ -1,0 +1,31 @@
+.review {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px; /* space between reviews */
+}
+
+.review h4 {
+    margin-top: 0;
+}
+
+.review p {
+    margin-bottom: 0.5em;
+}
+
+.review strong {
+    display: block; /* makes it like a title */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'sublime/css/signup.css' %}">
+{% endblock extrahead %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="signup-container">
+    <div class="signup-form">
+        <form method="POST" action="{% url 'signup' %}" class="form-signup">
+            {% csrf_token %}
+            <h1 class="text-center mb-4">Sign Up</h1>
+
+            <!-- User Type Selection -->
+            <div class="form-group user-type-selection">
+                <label for="id_user_type">I am signing up as a:</label>
+                {% render_field form.user_type class="form-control" %}
+            </div>
+
+            {% for field in form %}
+                {% if field.name != 'user_type' %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {% render_field field class="form-input" %}
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            
+            <div class="form-group">
+                <button type="submit" class="form-button">Register</button>
+            </div>
+        </form>
+        <p class="already-member text-center">Already have an account? <a href="{% url 'login' %}" class="btn btn-secondary">Login</a></p>
+    </div>
+    <div class="signup-image">
+        <img src="{% static 'sublime/images/signup-image.png' %}" alt="Sign Up">
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extrahead %}
+    <style>
+        /* Apply background image to the entire body of the page */
+        body {
+            background-image: url('{% static "sublime/images/Welcometo.png" %}');
+            background-size: cover; /* Cover the entire page */
+            background-repeat: no-repeat; /* Do not repeat the image */
+        }
+        main {
+            color: white; /* Adjust text color for visibility */
+            text-align: center; /* Center the text */
+            padding-top: 100px; /* Adjust padding to position the content */
+        }
+        /* Specific styles for the heading */
+        h1 {
+            font-size: 5rem; /* Increase the size of the heading */
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            margin-bottom: 0.5em; /* Add space below the heading */
+        }
+        /* Specific styles for the paragraph */
+        p {
+            font-size: 2rem; /* Increase the size of the paragraph */
+            font-weight: normal;
+            font-family: 'Playfair Display', serif;
+            margin-top: 0; /* Remove space above the paragraph */
+        }
+    </style>
+{% endblock extrahead %}
+
+{% block content %}
+    <main>
+        <section class="welcome-banner">
+            <h1>Welcome to Sublime!</h1>
+            <p>Only a few tickets left...</p>
+        </section>
+        <section class="event-preview">
+            <div class="event-card highlighted"><button class="carousel-btn left-btn">‹</button></div>
+            <div class="event-card"></div>
+            <div class="event-card"></div>
+            <div class="event-card"><button class="carousel-btn right-btn">›</button></div>
+        </section>
+        <section class="announcement">
+            <p>Soon but not too soon</p>
+        </section>
+    </main>
+{% endblock content %}

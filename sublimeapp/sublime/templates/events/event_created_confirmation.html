@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Event Submitted{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Event Submitted!</h4>
+        <p>Your event has been successfully created and is awaiting approval. You will be notified once it has been reviewed. Thank you for using our platform!</p>
+        <hr>
+        <p class="mb-0">Return to <a href="{% url 'home' %}" class="alert-link">homepage</a> or go to <a href="{% url 'list_events' %}" class="alert-link">other events</a>.</p>
+    </div>
+</div>
+{% endblock %}

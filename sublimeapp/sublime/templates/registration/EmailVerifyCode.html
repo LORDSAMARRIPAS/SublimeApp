@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Verify Your Email</h2>
+    <form method="post" action="{% url 'email_verify_code' user_id=user_id %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="verificationCode" class="form-label">Verification Code</label>
+            <input type="text" class="form-control" id="verificationCode" name="verification_code">
+        </div>
+        <button type="submit" class="btn btn-primary">Verify</button>
+    </form>
+</div>
+{% endblock %}

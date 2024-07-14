@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Notifications</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Notification</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for notification in notifications %}
+                            <tr>
+                               <td>
+                                {% if user.is_organizer %}
+                                    <a href="{% url 'my_tickets' %}">{{ notification.message }}</a>                                 
+                                {% else %}
+                                    <a href="{% url 'list_events' %}">{{ notification.message }}</a>                                 
+                                {% endif %}                                   
+                                                                                                
+                                </td>
+                                <td>{{ notification.date }}
+                               </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

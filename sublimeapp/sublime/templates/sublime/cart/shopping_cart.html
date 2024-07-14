@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Cart{% endblock %} 
+{% block content %}
+
+    <h3 align="center">Shopping Cart</h3>
+    {% if cartList %}
+    
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cartItem in cartList %}
+            <tr>
+                <td>{{ cartItem.event_id.id }}</td>
+                <td>{{ cartItem.event_id.name }}</td>
+                <td>{{ cartItem.event_id.edatetime }}</td>
+                <td>
+                    <form action="{% url 'update_shopping_cart' cart_id=cartItem.id %}"" method="POST">
+                        {% csrf_token %}
+                        <input style="width:60px" type="number" min=1 max={{cartItem.quantity_available}} id="quantity" name="quantity" value="{{cartItem.quantity}}"/>
+                        <input type="submit" class="btn btn-primary btn-sm" name="updateButton"value="Update"/>
+                    </form>
+                </td>
+                <td>${{cartItem.event_id.price}}</td>
+                <td>${{cartItem.get_total_item_price}}</td>
+                <td>
+                    <form action="{% url 'delete_from_shopping_cart' cartItem.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-danger btn-sm" name="delButton"value="Delete"/>
+                    </form>
+                </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    
+        <br />
+        <div>
+            <h6>Total items: {{total_items}}</h6>
+            <h6>Total price: ${{total_price}}</h6>
+            <form action="{% url 'payment' %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary" name="paymentButton" value="Payment"/>
+            </form>
+        </div>
+    {% else %}
+        <h2>Your shopping cart is empty.</h2>
+    {% endif %}
+{% endblock %}

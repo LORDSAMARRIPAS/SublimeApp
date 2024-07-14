@@ -1,0 +1,42 @@
+{%extends "base.html"%}
+{%block title%}Show Review{%endblock%}
+{%block content%}
+  <h3 align="center">Current Reviews for Event: {{event_id}}</h3>
+  <br/>
+  {%for review in reviews%}
+  <table class="table" style = 'width:50%' >    
+    <thead> 
+      <th> 
+        <div>
+            {%if review.user_id.profile_image%}
+            <img src="{{review.user_id.profile_image}}" alt="" class="rounded-circle" style="width:50px;height:50px;"> 
+            {%else%}
+            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="" class="rounded-circle" style="width:50px;height:50px;">                
+            {%endif%}
+            {{review.user_id.username}}                     
+          </div>
+          <div> 
+            <span style='font-size: 9pt'> {{review.date}} </span>        
+          </div>          
+      </th>
+    </thead>
+    <tbody> 
+       <tr>
+          <td> 
+            <div><strong>Title:</strong> {{review.title}} </div> 
+            <div><strong>Rating:</strong>  {{review.rating}} </div>
+            <br/>            
+            <div class="" style ='height: 50px'>{{review.review_txt}} </div>
+            <div> {%if request.user == review.user_id%}                 
+              <a class="btn btn-primary btn-sm" href="{%url 'edit_review' review.review_id %}" >Edit Review</a>
+            {%endif%}  
+          </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+  <br/>
+    
+  {%endfor%}
+{%endblock%}
+

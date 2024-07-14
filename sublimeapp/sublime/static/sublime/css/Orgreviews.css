@@ -1,0 +1,51 @@
+
+
+/* Main profile page layout */
+.Organizers{
+    display: flex;
+    flex-wrap: wrap; /* Allow sidebar to stack on smaller screens */
+    gap: 20px; /* Spacing between sidebar and content */
+    margin-top: 20px;
+    justify-content: center; /* Center the content for larger screens */
+}
+
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .Organizers {
+        flex-direction: column;
+    }
+
+    .reviews-content {
+        width: 100%; /* Full width content on smaller screens */
+    }
+}
+
+
+/* Adjust the nav-link to have a different look for active state */
+.nav-links {
+    padding: 20px 40px;  /*  length and height*/
+    background-color: #6c757d;
+    color: #fff; /* White text */
+    text-decoration: none; /* No underline */
+    display: block; /* Make it block to occupy full width */
+    border-radius: 4px;
+    margin-top: 15px;   /*distance away from each other*/
+    margin-bottom: 15px;   /*distance away from each other*/
+}
+
+.nav-links:hover {
+    background-color: #0d6dfd91;
+    color: #ffffff;
+}
+/* Profile content section */
+.reviews-content {
+    flex-grow: 1;
+    max-width: 800px; /* Maximum width for content area */
+    background-color: #ffffffc4; /* White background for content */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+
