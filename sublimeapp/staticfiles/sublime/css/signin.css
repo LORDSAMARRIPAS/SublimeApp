@@ -1,0 +1,101 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shadow-wrap {
+    display: flex; /* use flexbox to lay out child elements side by side */
+    align-items: center; /* center items vertically */
+    justify-content: center; /* center items horizontally */
+    padding: 40px; /* adjust padding as necessary */
+    gap: 20px; /* adds space between the form and image */
+    max-width: 900px; /* adjust as needed */
+    margin: 40px auto; /* center the shadow-wrap on the page */
+}
+
+.form-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px; /* maximum width of the form */
+    flex: 1; /* allow the form to grow and shrink as needed */
+}
+
+.form-wrap h3 {
+    color: #333333;
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #00408b;
+}
+
+.form-wrap p {
+    margin-top: 20px;
+}
+
+.form-wrap a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.form-wrap a:hover {
+    text-decoration: underline;
+}
+
+
+.sign-up-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sign-up-text a {
+    display: inline-block;
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.sign-up-text a:hover {
+    background-color: #00408b;
+    text-decoration: none;
+}
+
+.signin-image {
+    flex: 1;
+    max-width: 100%; /* ensures image is responsive */
+    height: auto; /* maintains aspect ratio */
+    display: block; /* ensures it takes up the entire space of its container */
+  }

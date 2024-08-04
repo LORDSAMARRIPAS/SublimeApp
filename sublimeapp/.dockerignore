@@ -1,0 +1,11 @@
+__pycache__
+*.pyc
+.git
+.venv
+venv/
+sublimeapp/__pycache__/
+sublime/migrations/__pycache__/
+sublime/__pycache__/
+sublime/migrations
+db.sqlite3
+sublime/tests/__pycache__/
