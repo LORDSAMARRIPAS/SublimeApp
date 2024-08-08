@@ -1,9 +1,9 @@
-from django.contrib.auth.models import AbstractUser
-from django.db import models
-from django.conf import settings
-from django.utils.timezone import now
+from django.contrib.auth.models import AbstractUser # type: ignore
+from django.db import models # type: ignore
+from django.conf import settings # type: ignore
+from django.utils.timezone import now # type: ignore
 import uuid
-from django.utils import timezone
+from django.utils import timezone # type: ignore
 from datetime import datetime, timedelta
 
 def get_current_datetime():
