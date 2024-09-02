@@ -19,9 +19,7 @@ Sublime is a comprehensive event ticketing platform that provides users with a s
 - **MySQL:** Utilized for database storage, MySQL ensures a secure and scalable foundation for managing event-related data. This relational database system plays a crucial role in storing and retrieving information seamlessly.
 
 - **Docker:** The platform of choice for containerization, Docker ensures consistency across development, testing, and deployment environments. It enhances scalability and simplifies the deployment process.
-
-- **Ubuntu Server:** The operating system of choice for hosting Communicado, Ubuntu Server provides a stable and secure environment for running the web application, ensuring optimal performance.
-
+- 
 - **HTML and CSS:** The backbone of the user interface, HTML defines the structure, and CSS enhances the visual appeal. Together, they contribute to an intuitive and user-friendly ticketing experience.
 
 ## User Requirements
@@ -111,8 +109,6 @@ The system is designed to host a Django web application using Docker for environ
 - **GitHub Repository:** The source code repository hosted on GitHub serves as the central location for version control and collaboration. Continuous Integration (CI) workflows are implemented using GitHub Actions to automate testing and ensure code quality upon every push to the main branch.
 
 - **CI/CD Pipelines:** GitHub Actions are leveraged to automate the CI/CD processes. Upon a push to the main branch, a CI workflow runs tests to validate the codebase's integrity. Following successful testing, a CD workflow deploys the updated code to a production server.
-
-- **Production Server:** An independent Ubuntu server, accessible via SSH, is utilized as the production environment. Upon triggering the CD workflow, the production server is updated by pulling the latest changes from the GitHub repository and executing deployment scripts. The deployed application is made accessible to the public via the server's domain IP address, on port 8000 - http://146.190.55.145:8000/
 
 - **MySQL Database:** An independent MySQL database hosted on DigitalOcean stores application data. Regular backups are performed using a cron job and MySQL dump to prevent data loss in the event of a system failure.
 
